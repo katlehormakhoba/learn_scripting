@@ -107,8 +107,51 @@ fi
 
 #-------------------------------CHAPTER 4 Putting It All Together — A Calculator
 
+# result=0
+# set -f 
+# while true; do
+#     read -p "Enter first number: " num1
+#     read -p "Enter operator (+ - * / or q to quit): " opr
+
+#     if [ $opr = "q" ]; then
+#         echo "Goodbye."
+#         break
+#     fi
+
+#     read -p "Enter second number: " num2
+    
+
+#     if [ $opr = "+" ]; then
+#         result=$((num1 + num2))
+#     elif [ $opr = "-" ]; then
+#         result=$((num1 - num2))
+#     elif [ $opr = "*" ]; then
+#         result=$((num1 * num2))
+#     elif [ $opr = "/" ]; then
+#         if [ $num2 -eq 0 ]; then
+#             echo "Error: cannot divide by zero."
+#             continue
+#         fi
+#     result=$((num1 / num2))
+#     else
+#         echo "Invalid operation : '$opr'... Goodbye."
+#         break
+#     fi
+
+#     echo "Results: $result"
+# done
+
+#-------------------------------CHAPTER 6 Putting It All Together — A Calculator (Clean version)
+
+
 result=0
 set -f 
+
+add() { echo $(($1 + $2)); }
+multiply() { echo $(($1 * $2)); }
+devide() { echo $(($1 / $2)); }
+subract() { echo $(($1 - $2)); }
+
 while true; do
     read -p "Enter first number: " num1
     read -p "Enter operator (+ - * / or q to quit): " opr
@@ -122,17 +165,17 @@ while true; do
     
 
     if [ $opr = "+" ]; then
-        result=$((num1 + num2))
+        result=$(add num1 num2)
     elif [ $opr = "-" ]; then
-        result=$((num1 - num2))
+        result=$(subtract num1 num2)
     elif [ $opr = "*" ]; then
-        result=$((num1 * num2))
+        result=$(multiply num1 num2)
     elif [ $opr = "/" ]; then
         if [ $num2 -eq 0 ]; then
             echo "Error: cannot divide by zero."
             continue
         fi
-    result=$((num1 / num2))
+        result=$(devide num1 num2)
     else
         echo "Invalid operation : '$opr'... Goodbye."
         break
@@ -140,9 +183,6 @@ while true; do
 
     echo "Results: $result"
 done
-
-#-------------------------------CHAPTER 4 Putting It All Together — A Calculator
-
 
 
 
