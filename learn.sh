@@ -103,3 +103,46 @@ if ls /etc/passwd > /dev/null 2>&1; then
 else
   echo "File not found!"
 fi
+
+
+#-------------------------------CHAPTER 4 Putting It All Together — A Calculator
+
+result=0
+set -f 
+while true; do
+    read -p "Enter first number: " num1
+    read -p "Enter operator (+ - * / or q to quit): " opr
+
+    if [ $opr = "q" ]; then
+        echo "Goodbye."
+        break
+    fi
+
+    read -p "Enter second number: " num2
+    
+
+    if [ $opr = "+" ]; then
+        result=$((num1 + num2))
+    elif [ $opr = "-" ]; then
+        result=$((num1 - num2))
+    elif [ $opr = "*" ]; then
+        result=$((num1 * num2))
+    elif [ $opr = "/" ]; then
+        if [ $num2 -eq 0 ]; then
+            echo "Error: cannot divide by zero."
+            continue
+        fi
+    result=$((num1 / num2))
+    else
+        echo "Invalid operation : '$opr'... Goodbye."
+        break
+    fi
+
+    echo "Results: $result"
+done
+
+#-------------------------------CHAPTER 4 Putting It All Together — A Calculator
+
+
+
+
