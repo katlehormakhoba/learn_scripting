@@ -53,6 +53,32 @@ fi
 
 #-------------------------------CHAPTER 3 Loops
 
+for color in red green yellow; do
+    echo "Color: $color"
+done
 
 
-#-------------------------------CHAPTER 4
+for i in $(seq 1 5); do
+     echo "Number : $i"
+done
+
+count=1
+while [ $count -le 5 ]; do
+    echo "Count is : $count"
+    ((count++))
+done
+
+for i in {1..5}; do
+  if [ $i -eq 3 ]; then
+    echo "Skipping $i"
+    continue
+  fi
+  if [ $i -eq 5 ]; then
+    echo "Breaking at $i"
+    break
+  fi
+  echo "Number: $i"
+done
+
+
+#-------------------------------CHAPTER 4 Error Handling (Bash-style)
