@@ -82,3 +82,24 @@ done
 
 
 #-------------------------------CHAPTER 4 Error Handling (Bash-style)
+
+ls no/
+
+echo $? 
+
+ls src/
+
+echo $?
+
+
+if ls src/ > /dev/null 2>&1; then
+    echo "Directory exists."
+else
+    echo "Directory not found."
+fi
+
+if ls /etc/passwd > /dev/null 2>&1; then
+  echo "File exists."
+else
+  echo "File not found!"
+fi
